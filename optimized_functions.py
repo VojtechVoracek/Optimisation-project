@@ -28,6 +28,8 @@ class ComponentFunction:
     optimal_value = 1
     num_of_functions = 2
     name = "ComponentFunction"
+    plot_title = "Component function"
+    c=3
     x_star = np.array([0])
 
     def objective(self, x):
@@ -81,9 +83,14 @@ class SphereFunction:
     optimal_value = 0
     num_of_functions = None
     name = "Square"
+    plot_title = "Sphere function"
+    c=3
     x_star = None
 
-    def __init__(self, dimension):
+    """ def __init__(self, dimension):
+        self.set_dimension(dimension) """
+
+    def set_dimension(self, dimension):
         self.num_of_functions = dimension
         self.x_star = np.zeros(dimension)
 
@@ -140,6 +147,8 @@ class LinearRegression:
     optimal_value = 0
     num_of_functions = None
     name = "LeastSquares"
+    plot_title = "Linear regression - diabetes dataset"
+    c=50
     x_star = None
     A = None
     b = None
