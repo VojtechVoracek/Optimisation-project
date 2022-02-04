@@ -179,3 +179,62 @@ class LinearRegression:
         """
         grad = 2 * self.A[index, :].T * (self.A[index, :] @ x - self.b[index])
         return grad
+
+class Non_Convex_Function:
+    """
+        A class to represent the negative bell curve.
+
+        Attributes
+        ----------
+        optimal_value : int
+                The minimum of the function.
+        num_of_functions : int
+                Number of f_i within the sum. f(x) = f_1(x) + f_2(x) + ... + f_num_of_functions(x)
+        name : string
+                Name of the function when plotted.
+        x_star : (num_of_functions, ) float
+                The minimizer of the function.
+
+        Methods
+        -------
+        objective(x):
+                Returns the value of function at point x.
+
+        gradient(projection):
+                Returns the gradient of function at point x.
+    """
+    optimal_value = 0
+    num_of_functions = None
+    name = "Non Convex Function"
+    plot_title = "Non Convex Function"
+    c=30
+    x_star = None
+
+    def __init__(self, dimension):
+        self.set_dimension(dimension)
+
+    def set_dimension(self, dimension):
+        self.num_of_functions = dimension
+        self.x_star = np.zeros(dimension)
+
+    def objective(self, x):
+        """
+            Returns the value of function at point x.
+            sum(1-e^(-x_i^2 / 20))
+
+            :param x:   (self.dimension, ) float
+            :return:    float
+        """
+        
+        return np.sum(1 - np.exp(-np.square(x)/10/2))
+
+    def gradient(self, x, index):
+        """
+            Returns the gradient of function at point x.
+            [0,0, ..., x_i*e^(-x_i^2 / 20)/10, 0, .., 0]
+            :param x:   (self.dimension, ) float
+            :return:    (self.dimension, ) float
+        """
+        grad = np.zeros_like(x)
+        grad[index] = x[index]*np.exp(-np.square(x[index])/10/2)/10
+        return grad
