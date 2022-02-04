@@ -8,6 +8,7 @@
 \usepackage{mathtools}
 \usepackage{graphicx}	% For figure environment
 \usepackage[english]{babel}
+\usepackage{comment}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -16,19 +17,19 @@
 \title{Difference between SGD and random reshuffling}
 
 \author{
-  Monde, Diego and Voracek, Vojtech and Wohlleben, Kilian\\
+  Monde, Diego; Voracek, Vojtech and Wohlleben, Kilian\\
   \textit{Faculty of Computer Science, University of Vienna, Vienna}
 }
 
 \maketitle
 
 \begin{abstract}
-TODO
+In this document we will present the difference between stochastic gradient descent and random reshuffling and provide empirical evidence for the latters superiority. 
 \end{abstract}
 
 \section{Motivation}
 \label{sec:motivation}
-
+\begin{comment}
 \begin{theorem}
 Differentiable function $f : \mathbb{R}^d \mapsto \mathbb{R}$ is called
 \mbox{$\mu$-strongly} convex if the following inequality holds $\forall x, y \in
@@ -68,7 +69,7 @@ $$||\bigtriangledown f(x) - \bigtriangledown f(y)|| \leq L ||x-y||,$$
 
 \noindent then is is also \mbox{$L$-smooth}.
 \end{lemma}
-
+\end{comment}
 \medskip
 
 We consider unconstrained, finite-sum minimization problems or an
@@ -84,7 +85,7 @@ exists a unique optimal solution whhich is denoted by $x^*$. We also assume
 that each individual function $f_i$ is smooth with Lipschitz gradients and
 \mbox{$L$-Lipschitz} on a bounded domain. This assumption helps us to make
 a particular convergence analysis.
-These types of problems are common in many areas of machine learning.
+These types of problems are common in many areas of machine learning, one example being Linear Regression.
 
 \medskip
 
@@ -164,9 +165,9 @@ $$x_t^{i+1} := x_t^i - \alpha \bigtriangledown f_{\pi_i}(x_t^i)$$
 
 
 
-\section{Optimized problems}
+\section{Optimization problems}
 
-We started with some benchmark functions to analyze the difference between
+We start with some benchmark functions to analyze the difference between
 SGD and RR. Than we used those algorithms to solve a real-life problem.
 
 \subsection{Sphere function}
@@ -183,7 +184,6 @@ number of components of the gradient: $n$. It is presumable one of
 the easiest continuous domain optimization problem.
 
 \subsection{The component function}
-
 \noindent Definition~\cite{COMPONENTFUNCTION}:
 $$f_1(x) = {1 \over 2}(x-1)^2, f_2(x) = {1 \over 2}(x+1)^2 + {x^2 \over 2}$$
 $$f(x) = f_1(x) + f_2(x) = {3 \over 2} x^2 + 1$$
@@ -193,7 +193,18 @@ Global minimum:
 $$f(x^*) = 1$$
 $$x^* = 0$$
 Strong-convexity constant $\mu = 3$, Lipschitz constant \mbox{$L=3$},
-number of components of the gradient: 2.
+number of components of the gradient: 2. This is an example of a function where RR is provably better than SGD. \cite{COMPONENTFUNCTION}
+
+\subsection{Inverse Bell Curve}
+\noindent Definition~:
+$$f(x) = \sum_{i=1}^n 1 - e^{-\frac{x_i^2}{2 \alpha}},$$
+Where $\alpha$ is a scaling parameter. 
+Components of gradient:
+$$\bigtriangledown f_i(x) = \frac{x_i}{\alpha} e^{-\frac{x_i^2}{2 \alpha}}$$
+Global minimum:
+$$f(x^*) = 0$$
+$$x^* = [0,...,0]$$
+This is an example of a non-convex function. We want to see, whether SGD and RR behave differently here.
 
 \subsection{Least squares linear regression}
 
@@ -241,24 +252,25 @@ We say that the algorithm converged if:
 
 \begin{itemize}
 \item $\epsilon = 10^{-7}$
-\item $c = 3$ ($c=50$ for linear regression)
+\item $c = 3$ ($c=50$ for linear regression, $c=30$ for Inverse Bell Curve)
 \item $s = 0.9$
 \item $q = 0.2$
 \item $T = 2000$
 \item $x_0 = \sim {\cal U}_{[-10, 10]}^d$
+\item $\alpha = 10$
 \end{itemize}
 
 The aim of this work is to compare performance of RR and SGD on
 specific functions~\ref{eq:finite-sum}. For this purpose, we measured the
 performance of those two algorithms on the Sphere function of different
-dimensions, on the component function above all, on the real-world
+dimensions, on the component function, on the real-world
 linear regression - the Diabetes dataset provided by
-sklearn~\cite{DIABETES,SKLEARN}. For the diabetes dataset, the dimension
+sklearn~\cite{DIABETES,SKLEARN} and for a self posed non-convex problem. For the diabetes dataset, the dimension
 is 10, and the optimized function is a sum of 442 independent functions.
 
 \section{Results}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=\columnwidth]{sphere_runs}
   \caption{100 runs of SGD and RR on the sphere function of different
@@ -270,21 +282,21 @@ is 10, and the optimized function is a sum of 442 independent functions.
   \label{fig:sphere1}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{sphere_runs_average}
+  \includegraphics[width=\columnwidth]{Square_runs_average}
   \caption{The graph is similar to~\ref{fig:sphere1}.
   In contrast, this graph shows the distance of q-suffix average
   $\overline{x}_{q,k}$ to the optimal solution $x^*$ over iterations.
   Moreover, the curve capturing the convergence rate
   $\mathcal{O}(1 / k^s)$ is added.}
   \vspace{-3mm}
-  \label{fig:denoise-fourier}
+  \label{fig:squareav1}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{regression_runs_a}
+  \includegraphics[width=\columnwidth]{LeastSquares_runs_average}
   \caption{100 runs of SGD and RR on the linear regression problem.
    The bold curve captures the mean over all runs of certain algorithm.
    The graph shows the distance of q-suffix average
@@ -292,12 +304,12 @@ is 10, and the optimized function is a sum of 442 independent functions.
    epochs. Moreover, the curve capturing the convergence rate
    $\mathcal{O}(1 / k^s)$ is added.}
   \vspace{-3mm}
-  \label{fig:sphere1}
+  \label{fig:leastsquares1}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\columnwidth]{component_runs}
+  \includegraphics[width=\columnwidth]{ComponentFunction_runs_average}
   \caption{100 runs of SGD and RR on the component function.
    The bold curve captures the mean over all runs of certain algorithm.
    The graph shows the distance of q-suffix average
@@ -305,16 +317,25 @@ is 10, and the optimized function is a sum of 442 independent functions.
    epochs. Moreover, the curve capturing the convergence rate
    $\mathcal{O}(1 / k^s)$ is added.}
   \vspace{-3mm}
-  \label{fig:sphere1}
+  \label{fig:component1}
 \end{figure}
 
-\section*{Conclusion}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\columnwidth]{Non_Convex_Function_runs_average}
+	\caption{100 runs of SGD and RR on the non-convex function.
+		The bold curve captures the mean over all runs of certain algorithm.
+		The graph shows the distance of q-suffix average
+		$\overline{x}_{q,k}$ to the optimal solution $x^*$ over
+		epochs. Moreover, the curve capturing the convergence rate
+		$\mathcal{O}(1 / k^s)$ is added.}
+	\vspace{-3mm}
+	\label{fig:nonconvex1}
+\end{figure}
 
-RR converges at rate $\mathcal{O}(1 / t^s)$.
+\section{Conclusion}
 
-RR beats SGD.
-
-RR is much more stable.
+RR has outperformed SGD in all our experiments. We have specifically seen, that RR is much more stable and yields faster convergence. In the case of the sphere function and the inverse bell curve that is due to the fact that all components of $x$ are optimized over equally often, so that no dimension is "neglected". In the case of the component function we could confirm the theoretical superiority of RR proven in \cite{COMPONENTFUNCTION}. For the real world dataset, we have also seen, that optimizing over the entire dataset uniformly is better than leaving the frequency to chance.
 
 \newpage
 \bibliographystyle{IEEEtran}
