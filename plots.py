@@ -1,11 +1,22 @@
 
 import matplotlib.pyplot as plt
 from optimized_functions import *
-from main import *
+from optimizers import *
 import warnings
 from tqdm import tqdm
 
 plt.rcParams['text.usetex'] = True
+
+def calc_x_q_k(xs: np.array, q: float):
+    """
+    calculates the average of last q*k iterates for epoch k
+    Args:
+        xs (np.array): x values optained from optimization
+        q (float): between 0 and 1 to give ratio of last k iterates to be used
+    """
+    t = len(xs)
+    x_q_k = [sum(xs[int(np.ceil((1-q)*k)) :k+1])/(k+1-np.ceil((1-q)*k)) for k in range(t)]
+    return(np.array(x_q_k))
 
 def process_run(optimized_function, num_of_epochs, x_0, tol=-1e-7, plot_average=False, q=None):
     """
@@ -30,30 +41,8 @@ def process_run(optimized_function, num_of_epochs, x_0, tol=-1e-7, plot_average=
 
     if plot_average:
         # Change iterates to the q-suffix average
-
-        # q * k
-        sgd_size = int(q * (len(scg_xs) + 1))
-        rr_size = int(q * (len(rr_xs) + 1))
-
-        if len(scg_xs) < num_of_epochs + 1:
-            diff = min(num_of_epochs + 1 - len(scg_xs), sgd_size)
-            scg_xs = np.append(scg_xs, np.ones((diff, 1)) * optimized_function.x_star, axis=0)
-
-        if len(rr_xs) < num_of_epochs + 1:
-            diff = min(num_of_epochs + 1 - len(rr_xs), rr_size)
-            rr_xs = np.append(rr_xs, np.ones((diff, 1)) * optimized_function.x_star, axis=0)
-
-        for i in range(len(scg_xs), 0, -1):
-            if i >= sgd_size:
-                scg_xs[i - 1, :] = np.sum(scg_xs[(i - sgd_size):i, :], axis=0) / sgd_size
-            else:
-                scg_xs[i - 1, :] = np.sum(scg_xs[:i], axis=0) / i
-
-        for i in range(len(rr_xs), 0, -1):
-            if i >= rr_size:
-                rr_xs[i - 1, :] = np.sum(rr_xs[(i - rr_size):i, :], axis=0) / rr_size
-            else:
-                rr_xs[i - 1, :] = np.sum(rr_xs[:i], axis=0) / i
+        scg_xs = calc_x_q_k(scg_xs, q)
+        rr_xs = calc_x_q_k(rr_xs, q)
 
     # calculate distance to the optimal solution
     scg_xs = np.linalg.norm(scg_xs - optimized_function.x_star, axis=1)
@@ -88,7 +77,7 @@ def plot_runs(optimized_function, num_of_epochs, num_of_runs, tol=-1e-7, plot_av
     """
 
     s=0.9
-    has_subplots = len(subplots) > 0;
+    has_subplots = len(subplots) > 0
 
     #verify. currently only spheres function allows custom settings to plot on multiple subplots.
     if(has_subplots and optimized_function.name!="Square"):
@@ -132,7 +121,7 @@ def plot_runs(optimized_function, num_of_epochs, num_of_runs, tol=-1e-7, plot_av
 
         if(optimized_function.name=="LeastSquares"):
             x_0_size = optimized_function.A.shape[1]
-        elif (optimized_function.name=="Square"):
+        elif (optimized_function.name=="Square" or optimized_function.name == "Non Convex Function"):
             x_0_size = optimized_function.num_of_functions #dimension
         else:
             x_0_size = 1
