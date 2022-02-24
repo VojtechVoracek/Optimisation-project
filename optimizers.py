@@ -1,4 +1,8 @@
 import numpy as np
+from utils import deepsubtract, deepmultiply
+import warnings
+
+warnings.filterwarnings("ignore")
 
 def update_step_size(epoch, c=3):
     """
@@ -12,7 +16,7 @@ def update_step_size(epoch, c=3):
     return c / (epoch + 2)**s
 
 
-def random_reshuffling(initial_x, num_of_epochs, optimized_function, tol=1e-7):
+def random_reshuffling(initial_x, num_of_epochs, optimized_function):
     """
             Implementation of the Random reshuffling algorithm.
             @article{,
@@ -36,8 +40,6 @@ def random_reshuffling(initial_x, num_of_epochs, optimized_function, tol=1e-7):
                 Maximal number of epochs for both algorithms.
     :param optimized_function: Class
                 Unconstrained, finite-sum function to optimize.
-    :param tol: float
-                Tolerance, epsilon.
 
     :return:
             xs: [n, d] float
@@ -60,13 +62,7 @@ def random_reshuffling(initial_x, num_of_epochs, optimized_function, tol=1e-7):
         for i in range(num_of_components):
 
             gradient = optimized_function.gradient(x, permutation[i])
-            x = x - ss * gradient
-
-            if np.linalg.norm(x - optimized_function.x_star) < tol:
-                objective = optimized_function.objective(x)
-                objectives.append(objective)
-                xs.append(x)
-                return np.array(xs), np.array(objectives)
+            x = deepsubtract(x, deepmultiply(gradient, ss))
 
         objective = optimized_function.objective(x)
         objectives.append(objective)
@@ -75,7 +71,7 @@ def random_reshuffling(initial_x, num_of_epochs, optimized_function, tol=1e-7):
     return np.array(xs), np.array(objectives)
 
 
-def SGD(initial_x, num_of_epochs, optimized_function, tol=1e-7):
+def SGD(initial_x, num_of_epochs, optimized_function):
     """
             Implementation of the Stochastic gradient descent algorithm.
             @Book{,
@@ -91,8 +87,6 @@ def SGD(initial_x, num_of_epochs, optimized_function, tol=1e-7):
                     Maximal number of epochs for both algorithms.
         :param optimized_function: Class
                     Unconstrained, finite-sum function to optimize.
-        :param tol: float
-                    Tolerance, epsilon.
 
         :return:
                 xs: [n, d] float
@@ -111,21 +105,14 @@ def SGD(initial_x, num_of_epochs, optimized_function, tol=1e-7):
         ss = update_step_size(epoch, optimized_function.c)
 
         for i in range(num_of_components):
-
+            
             index = np.random.choice(num_of_components, 1)[0]
 
             gradient = optimized_function.gradient(x, index)
-            x = x - ss * gradient
-
-            if np.linalg.norm(x - optimized_function.x_star) < tol:
-                objective = optimized_function.objective(x)
-                objectives.append(objective)
-                xs.append(x)
-                return np.array(xs), np.array(objectives)
+            x = deepsubtract(x, deepmultiply(gradient, ss))
 
         objective = optimized_function.objective(x)
         objectives.append(objective)
         xs.append(x)
 
     return np.array(xs), np.array(objectives)
-
