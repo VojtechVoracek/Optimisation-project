@@ -4,6 +4,9 @@ from run import simulate_runs
 from sklearn.datasets import load_diabetes
 
 def sphere_function_run():
+    """
+    Experiment for Sphere function
+    """
     max_epochs = 50
     q = 0.2
     runs = 100
@@ -20,6 +23,9 @@ def sphere_function_run():
     plot_with_subplots(sgd_xs_list, rr_xs_list, s, "Sphere function", [str(i) for i in dims])
     
 def component_function_run():
+    """
+    Experiment for component function
+    """
     max_epochs = 500
     runs = 100
     q = 0.2
@@ -29,6 +35,9 @@ def component_function_run():
     plot_xs(sgd_xs, rr_xs, s, "Component Function")
     
 def linear_regression_run():
+    """
+    Experiment for linear regression
+    """
     max_epochs = 2000
     runs = 25
     q = 0.2
@@ -44,6 +53,9 @@ def linear_regression_run():
     plot_xs(sgd_xs, rr_xs, s, "Linear Regression")
     
 def nn_run():
+    """
+    Experiment for Neural Network
+    """
     max_epochs = 100
     runs = 10
     q = 0.2
