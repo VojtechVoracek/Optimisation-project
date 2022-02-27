@@ -56,10 +56,10 @@ def nn_run():
     """
     Experiment for Neural Network
     """
-    max_epochs = 100
-    runs = 10
+    max_epochs = 1000
+    runs = 20
     q = 0.2
-    s = 0.9
+    s = 0.3
     
     data = load_diabetes()
     A = data['data']

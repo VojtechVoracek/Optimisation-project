@@ -1,8 +1,29 @@
+from optimized_functions import *
+from plots import plot_xs
+from sklearn.datasets import load_diabetes
 import numpy as np
-from optimizers import SGD, random_reshuffling
+from optimizers import gradient_descent
 from utils import calc_x_q_k
 from tqdm import tqdm
 
+def nn_run():
+    """
+    Experiment for Neural Network
+    """
+    max_epochs = 100
+    runs = 1
+    q = 0.2
+    s = 0.9
+    
+    data = load_diabetes()
+    A = data['data']
+    A = (A - np.mean(A, axis = 0))/np.std(A, axis = 0)
+    b = np.expand_dims(data['target'], 1)
+    b = (b - np.mean(b, axis = 0))/np.std(b, axis = 0)
+    
+    sgd_xs, rr_xs = simulate_runs(Neural_Network(A,b), max_epochs, runs, q, True)
+    plot_xs(sgd_xs, rr_xs, s, "Neural Network")
+    
 def process_run(optimized_function, num_of_epochs, return_average=False, q=None, return_objectives=False):
     """
     Single run of SGD and RR for selected function
@@ -21,8 +42,8 @@ def process_run(optimized_function, num_of_epochs, return_average=False, q=None,
     """
     x_0 = optimized_function.x_0()
 
-    sgd_values, sgd_objectives = SGD(x_0, num_of_epochs, optimized_function)
-    rr_values, rr_objectives = random_reshuffling(x_0, num_of_epochs, optimized_function)
+    sgd_values, sgd_objectives = gradient_descent(x_0, num_of_epochs, optimized_function)
+    rr_values, rr_objectives = gradient_descent(x_0, num_of_epochs, optimized_function)
 
     if return_objectives == True:
         sgd_xs = sgd_objectives
@@ -49,7 +70,7 @@ def process_run(optimized_function, num_of_epochs, return_average=False, q=None,
     return sgd_xs, rr_xs
 
 
-def simulate_runs(optimized_function, num_of_epochs, num_of_runs, q=None, return_objectives=False, return_average = True):
+def simulate_runs(optimized_function, num_of_epochs, num_of_runs, q=None, return_objectives=False):
     """
     Run simulations
 
@@ -67,8 +88,11 @@ def simulate_runs(optimized_function, num_of_epochs, num_of_runs, q=None, return
 
     for _ in tqdm(range(num_of_runs)):
         sgd_xs, rr_xs = process_run(
-            optimized_function, num_of_epochs, return_average, q, return_objectives)
+            optimized_function, num_of_epochs, True, q, return_objectives)
         sgd_list.append(sgd_xs)
         rr_list.append(rr_xs)
 
     return(sgd_list, rr_list)
+
+if __name__ == "__main__":
+    nn_run()

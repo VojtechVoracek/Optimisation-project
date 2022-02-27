@@ -256,7 +256,7 @@ class Neural_Network:
         self.optimal_value = 0
         self.hidden_layer_sizes = hidden_layer_sizes
         self.activations = activations
-        self.c = 0.0003
+        self.c = 0.03
 
     def x_0(self):
         """
@@ -289,7 +289,8 @@ class Neural_Network:
 
         self.nn.weights = x[0]
         self.nn.biases = x[1]
-        objective = self.nn.mean_squared_error(self.A, self.b)
+        
+        objective = self.nn.mean_squared_error(self.A, np.expand_dims(self.b, 1))
 
         self.nn.weights = temp_weights
         self.nn.biases = temp_biases
@@ -305,8 +306,13 @@ class Neural_Network:
         Returns:
             Gradient of NN
         """
+        temp_weights = self.nn.weights.copy()
+        temp_biases = self.nn.biases.copy()
+
         self.nn.weights = x[0]
         self.nn.biases = x[1]
         weight_grad, bias_grad = self.nn.grad(
             np.expand_dims(self.A[index, :], 1).T, self.b[index])
+        self.nn.weights = temp_weights
+        self.nn.biases = temp_biases
         return [weight_grad, bias_grad]

@@ -79,4 +79,5 @@ def plot_with_subplots(sgd_xs_list: list, rr_xs_list: list, s: float, name: str,
     axs[3].yaxis.tick_right()
     axs[2].set_xlabel("Epoch")
     axs[3].set_xlabel("Epoch")
+    fig.suptitle(name, size = 20)
     fig.savefig(name + "_runs.png")

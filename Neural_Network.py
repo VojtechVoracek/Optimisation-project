@@ -74,7 +74,12 @@ def identity(t, gradient=False):
         return t, np.ones_like(t)
 
 
-class MyMLP():
+class MyMLP:
+    """
+    After a template from
+    Sebastian Tschiatschek, 2022, Starter Code for Programming Assignment 5,
+    Introduction to Machine Learning, University of Vienna
+    """
     def __init__(self, hidden_layer_sizes=[10, 10], activations=[relu, relu]):
         assert len(activations) == len(
             hidden_layer_sizes), "Invalid number of layers/activations."
@@ -202,5 +207,5 @@ class MyMLP():
             if cache:
                 self.cache_post_activations.append(t.T)
                 self.cache_derivatives.append(g.T)
-
+                
         return t.T
