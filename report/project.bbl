@@ -21,18 +21,6 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{StrongConvexity}
-D.~P. Bertsekas, A.~Nedic, and A.~E. Ozdaglar, \emph{Convex analysis and
-  optimization}.\hskip 1em plus 0.5em minus 0.4em\relax Athena Scientific,
-  2003.
-
-\bibitem{L-Lipschitz}
-\BIBentryALTinterwordspacing
-M.~O'Searcoid, \emph{Metric Spaces}, ser. Springer Undergraduate Mathematics
-  Series.\hskip 1em plus 0.5em minus 0.4em\relax Springer London, 2006.
-  [Online]. Available: \url{https://books.google.cz/books?id=aP37I4QWFRcC}
-\BIBentrySTDinterwordspacing
-
 \bibitem{GD}
 M.~A. Cauchy, ``Methode g ´ en´ erale pour la r ´ esolution des syst ´ emes
   ` d’equations simultan ´ ees,'' 1847.
@@ -40,10 +28,6 @@ M.~A. Cauchy, ``Methode g ´ en´ erale pour la r ´ esolution des syst ´ emes
 \bibitem{SGD}
 B.~T. Poliak, \emph{Introduction to optimization}.\hskip 1em plus 0.5em minus
   0.4em\relax New York: Optimization Software, Publications Division, 1987.
-
-\bibitem{SPHERE}
-K.~A. De~Jong, ``Analysis of the behavior of a class of genetic adaptive
-  systems,'' Ph.D. dissertation, The University of Michigan, 1975.
 
 \bibitem{COMPONENTFUNCTION}
 \BIBentryALTinterwordspacing
@@ -53,6 +37,10 @@ M.~Gürbüzbalaban, A.~Ozdaglar, and P.~A. Parrilo, ``Why random reshuffling
   \url{http://dx.doi.org/10.1007/s10107-019-01440-w}
 \BIBentrySTDinterwordspacing
 
+\bibitem{SPHERE}
+K.~A. De~Jong, ``Analysis of the behavior of a class of genetic adaptive
+  systems,'' Ph.D. dissertation, The University of Michigan, 1975.
+
 \bibitem{REGRESSION}
 \BIBentryALTinterwordspacing
 F.~Galton, ``Regression towards mediocrity in hereditary stature.'' \emph{The
@@ -60,6 +48,11 @@ F.~Galton, ``Regression towards mediocrity in hereditary stature.'' \emph{The
   vol.~15, pp. 246--263, 1886. [Online]. Available:
   \url{http://www.jstor.org/stable/2841583}
 \BIBentrySTDinterwordspacing
+
+\bibitem{NEURALNETWORK}
+F.~Rosenblatt, ``The perceptron: A probabilistic model for information storage
+  and organization in the brain.'' \emph{Psychological Review}, vol.~65, no.~6,
+  p. 386–408, 1958.
 
 \bibitem{DIABETES}
 \BIBentryALTinterwordspacing

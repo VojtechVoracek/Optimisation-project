@@ -14,45 +14,45 @@ Database file #1: references.bib
 Warning--empty journal in GD
 
 Done.
-You've used 9 entries,
+You've used 8 entries,
             4087 wiz_defined-function locations,
-            890 strings with 9152 characters,
-and the built_in function-call counts, 5439 in all, are:
-= -- 430
-> -- 142
-< -- 26
-+ -- 72
-- -- 30
-* -- 259
-:= -- 893
-add.period$ -- 18
-call.type$ -- 9
-change.case$ -- 6
+            884 strings with 9018 characters,
+and the built_in function-call counts, 5286 in all, are:
+= -- 444
+> -- 129
+< -- 29
++ -- 66
+- -- 27
+* -- 248
+:= -- 855
+add.period$ -- 16
+call.type$ -- 8
+change.case$ -- 7
 chr.to.int$ -- 54
-cite$ -- 10
+cite$ -- 9
 duplicate$ -- 392
-empty$ -- 447
-format.name$ -- 34
-if$ -- 1234
+empty$ -- 398
+format.name$ -- 30
+if$ -- 1205
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 78
-newline$ -- 58
-num.names$ -- 9
-pop$ -- 192
+int.to.str$ -- 8
+missing$ -- 73
+newline$ -- 53
+num.names$ -- 8
+pop$ -- 166
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 430
+skip$ -- 427
 stack$ -- 0
-substring$ -- 146
-swap$ -- 296
-text.length$ -- 8
+substring$ -- 165
+swap$ -- 310
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 9
+type$ -- 8
 warning$ -- 1
 while$ -- 18
-width$ -- 10
-write$ -- 111
+width$ -- 9
+write$ -- 104
 (There was 1 warning)
