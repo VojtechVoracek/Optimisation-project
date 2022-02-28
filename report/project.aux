@@ -29,29 +29,31 @@
 \@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Stochastic gradient descent}}{1}{algocf.2}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces Random reshuffling}}{1}{algocf.3}}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Optimization problems}{1}{section.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Sphere function}{1}{subsection.2.1}}
 \citation{COMPONENTFUNCTION}
 \citation{COMPONENTFUNCTION}
 \citation{REGRESSION}
+\citation{NEURALNETWORK}
 \citation{COMPONENTFUNCTION}
 \citation{COMPONENTFUNCTION}
 \citation{DIABETES}
 \citation{SKLEARN}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}The component function}{2}{subsection.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Inverse Bell Curve}{2}{subsection.2.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}Least squares linear regression}{2}{subsection.2.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Experiments}{2}{section.3}}
 \citation{COMPONENTFUNCTION}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{3}{section.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 100 runs of SGD and RR on the sphere function of different dimensions (2, 3, 5, 10). The bold curve captures the mean over all runs of certain algorithm. The graph shows the distance of $x$ to the optimal solution $x^*$ over epochs.Moreover, the curve capturing the convergence rate $\mathcal  {O}(1 / k^s)$ is added.}}{3}{figure.1}}
-\newlabel{fig:sphere1}{{1}{3}{100 runs of SGD and RR on the sphere function of different dimensions (2, 3, 5, 10). The bold curve captures the mean over all runs of certain algorithm. The graph shows the distance of $x$ to the optimal solution $x^*$ over epochs.Moreover, the curve capturing the convergence rate $\mathcal {O}(1 / k^s)$ is added}{figure.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The graph is similar to~\ref  {fig:sphere1}. In contrast, this graph shows the distance of q-suffix average $\overline  {x}_{q,k}$ to the optimal solution $x^*$ over iterations. Moreover, the curve capturing the convergence rate $\mathcal  {O}(1 / k^s)$ is added.}}{3}{figure.2}}
-\newlabel{fig:squareav1}{{2}{3}{The graph is similar to~\ref {fig:sphere1}. In contrast, this graph shows the distance of q-suffix average $\overline {x}_{q,k}$ to the optimal solution $x^*$ over iterations. Moreover, the curve capturing the convergence rate $\mathcal {O}(1 / k^s)$ is added}{figure.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion}{3}{section.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 100 runs of SGD and RR on the linear regression problem. The bold curve captures the mean over all runs of certain algorithm. The graph shows the distance of q-suffix average $\overline  {x}_{q,k}$ to the optimal solution $x^*$ over epochs. Moreover, the curve capturing the convergence rate $\mathcal  {O}(1 / k^s)$ is added.}}{3}{figure.3}}
-\newlabel{fig:leastsquares1}{{3}{3}{100 runs of SGD and RR on the linear regression problem. The bold curve captures the mean over all runs of certain algorithm. The graph shows the distance of q-suffix average $\overline {x}_{q,k}$ to the optimal solution $x^*$ over epochs. Moreover, the curve capturing the convergence rate $\mathcal {O}(1 / k^s)$ is added}{figure.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 100 runs of SGD and RR on the component function. The bold curve captures the mean over all runs of certain algorithm. The graph shows the distance of q-suffix average $\overline  {x}_{q,k}$ to the optimal solution $x^*$ over epochs. Moreover, the curve capturing the convergence rate $\mathcal  {O}(1 / k^s)$ is added.}}{3}{figure.4}}
-\newlabel{fig:component1}{{4}{3}{100 runs of SGD and RR on the component function. The bold curve captures the mean over all runs of certain algorithm. The graph shows the distance of q-suffix average $\overline {x}_{q,k}$ to the optimal solution $x^*$ over epochs. Moreover, the curve capturing the convergence rate $\mathcal {O}(1 / k^s)$ is added}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Sphere function}{2}{subsection.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}The component function}{2}{subsection.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Least squares linear regression}{2}{subsection.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}Neural Network}{2}{subsection.2.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Experiments}{2}{section.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{2}{section.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion}{2}{section.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Here we see, that RR outperforms SGD quite clearly. The results of RR vary little and stay equal for different dimensions, while SGD gets visibly worse as d gets larger. }}{3}{figure.1}}
+\newlabel{fig:squareav1}{{1}{3}{Here we see, that RR outperforms SGD quite clearly. The results of RR vary little and stay equal for different dimensions, while SGD gets visibly worse as d gets larger}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Here we see, that on average RR leads to better results than SGD. In particular we see that SGD barely improves after a certain point, while RR is still improves after 2000 epochs.}}{3}{figure.2}}
+\newlabel{fig:leastsquares1}{{2}{3}{Here we see, that on average RR leads to better results than SGD. In particular we see that SGD barely improves after a certain point, while RR is still improves after 2000 epochs}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Appendix}{3}{section.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces For the component function we see that indeed RR outperforms SGD very quickly and quite significantly with over an order of magnitude. Again we see less variance between the different trainings.}}{3}{figure.3}}
+\newlabel{fig:component1}{{3}{3}{For the component function we see that indeed RR outperforms SGD very quickly and quite significantly with over an order of magnitude. Again we see less variance between the different trainings}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces In the neural network case we actually have that SGD performs better. While it is barely visible in this picture, the data shows, that initially RR improves quicker but at some point SGD takes over. }}{3}{figure.4}}
+\newlabel{fig:nonconvex1}{{4}{3}{In the neural network case we actually have that SGD performs better. While it is barely visible in this picture, the data shows, that initially RR improves quicker but at some point SGD takes over}{figure.4}{}}
 \bibstyle{IEEEtran}
 \bibdata{references}
 \bibcite{StrongConvexity}{1}
@@ -63,6 +65,4 @@
 \bibcite{REGRESSION}{7}
 \bibcite{DIABETES}{8}
 \bibcite{SKLEARN}{9}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 100 runs of SGD and RR on the non-convex function. The bold curve captures the mean over all runs of certain algorithm. The graph shows the distance of q-suffix average $\overline  {x}_{q,k}$ to the optimal solution $x^*$ over epochs. Moreover, the curve capturing the convergence rate $\mathcal  {O}(1 / k^s)$ is added.}}{4}{figure.5}}
-\newlabel{fig:nonconvex1}{{5}{4}{100 runs of SGD and RR on the non-convex function. The bold curve captures the mean over all runs of certain algorithm. The graph shows the distance of q-suffix average $\overline {x}_{q,k}$ to the optimal solution $x^*$ over epochs. Moreover, the curve capturing the convergence rate $\mathcal {O}(1 / k^s)$ is added}{figure.5}{}}
 \@writefile{toc}{\contentsline {section}{References}{4}{section*.1}}

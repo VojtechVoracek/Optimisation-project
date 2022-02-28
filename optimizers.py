@@ -4,13 +4,19 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
+
 def update_step_size(epoch, c=3):
     """
-        Update the step size according to the following expression: alpha = c / (k + 2)^s
-    :param epoch: int
-            Index of current epoch
-    :return: float
-            New learning rate
+    Update the step size according to the following expression: alpha = c / (k + 2)^s
+
+    Arguments:
+        epoch -- Epoch of training
+
+    Keyword Arguments:
+        c -- Initial learning rate (default: {3})
+
+    Returns:
+        Learning rate
     """
     s = 0.9
     return c / (epoch + 2)**s
@@ -18,7 +24,7 @@ def update_step_size(epoch, c=3):
 
 def random_reshuffling(initial_x, num_of_epochs, optimized_function):
     """
-            Implementation of the Random reshuffling algorithm.
+    Implementation of the Random reshuffling algorithm.
             @article{,
                title={Why random reshuffling beats stochastic gradient descent},
                volume={186},
@@ -34,18 +40,13 @@ def random_reshuffling(initial_x, num_of_epochs, optimized_function):
                pages={49–84}
             }
 
-    :param initial_x: (d, ) float
-            The initial vector x_0.
-    :param num_of_epochs: int
-                Maximal number of epochs for both algorithms.
-    :param optimized_function: Class
-                Unconstrained, finite-sum function to optimize.
+    Arguments:
+        initial_x -- Initial x
+        num_of_epochs -- Number of epochs
+        optimized_function -- Function to be optimized
 
-    :return:
-            xs: [n, d] float
-                An array of iterates
-            objectives: (n, ) float
-                An array of objective function values.
+    Returns:
+        Array of results of training
     """
     xs = [initial_x]
     objectives = [optimized_function.objective(initial_x)]
@@ -73,7 +74,7 @@ def random_reshuffling(initial_x, num_of_epochs, optimized_function):
 
 def SGD(initial_x, num_of_epochs, optimized_function):
     """
-            Implementation of the Stochastic gradient descent algorithm.
+    Implementation of the Stochastic gradient descent algorithm.
             @Book{,
               author = {Poliak, B. T.},
               title = {Introduction to optimization},
@@ -81,18 +82,13 @@ def SGD(initial_x, num_of_epochs, optimized_function):
               year = 1987
             }
 
-        :param initial_x: (d, ) float
-                The initial vector x_0.
-        :param num_of_epochs: int
-                    Maximal number of epochs for both algorithms.
-        :param optimized_function: Class
-                    Unconstrained, finite-sum function to optimize.
+    Arguments:
+        initial_x -- Initial x
+        num_of_epochs -- Number of epochs
+        optimized_function -- Function to be optimized
 
-        :return:
-                xs: [n, d] float
-                    An array of iterates
-                objectives: (n, ) float
-                    An array of objective function values.
+    Returns:
+        Array of results of training
     """
     xs = [initial_x]
     objectives = [optimized_function.objective(initial_x)]
@@ -105,7 +101,7 @@ def SGD(initial_x, num_of_epochs, optimized_function):
         ss = update_step_size(epoch, optimized_function.c)
 
         for i in range(num_of_components):
-            
+
             index = np.random.choice(num_of_components, 1)[0]
 
             gradient = optimized_function.gradient(x, index)

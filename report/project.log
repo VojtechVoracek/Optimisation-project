@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.24)  4 FEB 2022 23:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.24)  27 FEB 2022 20:08
 entering extended mode
 **./project.tex
 (project.tex
@@ -566,25 +566,24 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-) Excluding 'comment' comment.
-LaTeX Font Info:    Try loading font information for U+msa on input line 78.
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 37.
 
 ("C:\Users\kilia\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 78.
+LaTeX Font Info:    Try loading font information for U+msb on input line 37.
 ("C:\Users\kilia\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 102.
-
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 61.
 ("C:\Users\kilia\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 102.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 61.
 
-Underfull \hbox (badness 1983) in paragraph at lines 142--147
+Underfull \hbox (badness 1983) in paragraph at lines 103--108
 \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 []; []; :::[]\OT1/cmr/m/n/10 ]$ \OT1/ptm/m
 /n/10 is a ran-dom per-mu-ta-tion of the set
  []
@@ -594,51 +593,42 @@ Underfull \hbox (badness 1983) in paragraph at lines 142--147
 
 ]
 
-Package amsmath Warning: Foreign command \over;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 188.
+LaTeX Warning: Citation `NEURALNETWORK' on page 2 undefined on input line 174.
 
-[2]
-<sphere_runs.png, id=96, 462.528pt x 346.896pt>
-File: sphere_runs.png Graphic file (type png)
-<use sphere_runs.png>
-Package pdftex.def Info: sphere_runs.png  used on input line 275.
-(pdftex.def)             Requested size: 228.8775pt x 171.65846pt.
-<Square_runs_average.png, id=98, 462.528pt x 346.896pt>
-File: Square_runs_average.png Graphic file (type png)
-<use Square_runs_average.png>
-Package pdftex.def Info: Square_runs_average.png  used on input line 287.
-(pdftex.def)             Requested size: 228.8775pt x 171.65846pt.
-<LeastSquares_runs_average.png, id=101, 462.528pt x 346.896pt>
-File: LeastSquares_runs_average.png Graphic file (type png)
-<use LeastSquares_runs_average.png>
-Package pdftex.def Info: LeastSquares_runs_average.png  used on input line 299.
-
-(pdftex.def)             Requested size: 228.8775pt x 171.65846pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<ComponentFunction_runs_average.png, id=102, 462.528pt x 346.896pt>
-File: ComponentFunction_runs_average.png Graphic file (type png)
-<use ComponentFunction_runs_average.png>
-Package pdftex.def Info: ComponentFunction_runs_average.png  used on input line
- 312.
+<Sphere_function_runs.png, id=90, 462.528pt x 346.896pt>
+File: Sphere_function_runs.png Graphic file (type png)
+<use Sphere_function_runs.png>
+Package pdftex.def Info: Sphere_function_runs.png  used on input line 208.
 (pdftex.def)             Requested size: 228.8775pt x 171.65846pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Non_Convex_Function_runs_average.png, id=103, 462.528pt x 346.896pt>
-File: Non_Convex_Function_runs_average.png Graphic file (type png)
-<use Non_Convex_Function_runs_average.png>
-Package pdftex.def Info: Non_Convex_Function_runs_average.png  used on input li
-ne 325.
+<Linear_Regression_run.png, id=92, 462.528pt x 346.896pt>
+File: Linear_Regression_run.png Graphic file (type png)
+<use Linear_Regression_run.png>
+Package pdftex.def Info: Linear_Regression_run.png  used on input line 216.
 (pdftex.def)             Requested size: 228.8775pt x 171.65846pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3 <./sphere_runs.png> <./Square_runs_average.png> <./LeastSquares_runs_average
-.png> <./ComponentFunction_runs_average.png>] (project.bbl
+<Component_Function_run.png, id=93, 462.528pt x 346.896pt>
+File: Component_Function_run.png Graphic file (type png)
+<use Component_Function_run.png>
+Package pdftex.def Info: Component_Function_run.png  used on input line 224.
+(pdftex.def)             Requested size: 228.8775pt x 171.65846pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Neural_Network_run.png, id=94, 462.528pt x 346.896pt>
+File: Neural_Network_run.png Graphic file (type png)
+<use Neural_Network_run.png>
+Package pdftex.def Info: Neural_Network_run.png  used on input line 232.
+(pdftex.def)             Requested size: 228.8775pt x 171.65846pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2] [3 <./Sphere_function_runs.png> <./Linear_Regression_run.png> <./Component_
+Function_run.png> <./Neural_Network_run.png>] (project.bbl
 
 ! Package inputenc Error: Unicode character ´ (U+B4)
 (inputenc)                not set up for use with LaTeX.
@@ -718,54 +708,51 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 344.
-[4
-
- <./Non_Convex_Function_runs_average.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 344.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 306.
+[4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 306.
  (project.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 344.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 344.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 306.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 306.
 Package rerunfilecheck Info: File `project.out' has not changed.
-(rerunfilecheck)             Checksum: C42EE4778E4D7D34786DC96247CE5B81;573.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 344.
+(rerunfilecheck)             Checksum: 546A3440F94999602E751143F00D3FCE;614.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 306.
  ) 
 Here is how much of TeX's memory you used:
- 9075 strings out of 492970
- 141021 string characters out of 3126593
- 258557 words of memory out of 3000000
- 12778 multiletter control sequences out of 15000+200000
+ 9069 strings out of 492970
+ 140791 string characters out of 3126593
+ 260822 words of memory out of 3000000
+ 12773 multiletter control sequences out of 15000+200000
  44465 words of font info for 90 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,13n,43p,623b,461s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,13n,43p,882b,461s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
 }<C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmex10.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmmi10.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/kilia/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/kilia/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/kilia/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/kilia/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/kilia/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/
 Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r10.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr5.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr7.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/kilia/AppData/Local/Programs
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/kilia/AppData/L
-ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/kil
-ia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><
-C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmsy8.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/symbols/msbm10.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/amsfonts/symbols/msbm7.pfb><C:/Users/kilia/AppData/Local/Pro
-grams/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb><C:/Users/kilia/AppData/Lo
-cal/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/kilia/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/kilia/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/kil
-ia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on project.pdf (4 pages, 752893 bytes).
+r7.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmsy7.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/kilia/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm7.pfb><C:/Users/ki
+lia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb><C:/U
+sers/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><
+C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.
+pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utm
+r8a.pfb><C:/Users/kilia/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times
+/utmri8a.pfb>
+Output written on project.pdf (4 pages, 528666 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
+ 192 PDF objects out of 1000 (max. 8388607)
  37 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

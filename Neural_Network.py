@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def relu(t, gradient=False):
     """Rectified linear unit activation function.
 
@@ -24,15 +25,30 @@ def relu(t, gradient=False):
     else:
         return t, (t > 0).astype(float)
 
-def Leaky_ReLU(t, gradient = False):
+
+def Leaky_ReLU(t, gradient=False):
+    """
+    Leaky_ReLU activation fuction
+
+    Arguments:
+        t -- pre-activations
+
+    Keyword Arguments:
+        gradient -- A flag used to indicate whether the gradient of the activation should
+        be computed. (default: {False})
+
+    Returns:
+        activations -- output after applying the activation function
+        gradient -- gradient of activation function. Only returned if flag is set to true.
+    """
     if not gradient:
-        t = np.where(t>0, t, 0.1*t)
+        t = np.where(t > 0, t, 0.1*t)
         return(t)
     else:
-        t = np.where(t>0, t, 0.1*t)
-        grad = np.where(t>0, 1, 0.1)
+        t = np.where(t > 0, t, 0.1*t)
+        grad = np.where(t > 0, 1, 0.1)
         return t, grad
-    
+
 
 def identity(t, gradient=False):
     """Identity activation function.
@@ -57,18 +73,34 @@ def identity(t, gradient=False):
     else:
         return t, np.ones_like(t)
 
-class MyMLP():
-    def __init__(self, hidden_layer_sizes=[10,10], activations=[relu, relu]):
-        assert len(activations) == len(hidden_layer_sizes), "Invalid number of layers/activations."
+
+class MyMLP:
+    """
+    After a template from
+    Sebastian Tschiatschek, 2022, Starter Code for Programming Assignment 5,
+    Introduction to Machine Learning, University of Vienna
+    """
+    def __init__(self, hidden_layer_sizes=[10, 10], activations=[relu, relu]):
+        assert len(activations) == len(
+            hidden_layer_sizes), "Invalid number of layers/activations."
 
         self.hidden_layer_sizes = hidden_layer_sizes.copy()
-        self.hidden_layer_sizes.append(1) # single output at final layer
+        self.hidden_layer_sizes.append(1)  # single output at final layer
         self.activations = activations.copy()
         self.activations.append(identity)
         self.cache_post_activations = []
         self.cache_derivatives = []
-        
+
     def initialize_weights(self, x):
+        """
+        Initializes weights
+
+        Arguments:
+            x -- Input
+
+        Raises:
+            ValueError: Missing activation function
+        """
         self.weights = []
         self.biases = []
         for i in range(len(self.hidden_layer_sizes)):
@@ -77,26 +109,38 @@ class MyMLP():
             else:
                 dim1 = self.hidden_layer_sizes[i-1]
             dim2 = self.hidden_layer_sizes[i]
-            if (self.activations[i] == relu) or (self.activations[i] == identity) or (self.activations[i] == Leaky_ReLU): 
-                W =  np.sqrt(2. / (dim1 + dim2)) *  np.random.randn(dim2, dim1)
+            if (self.activations[i] == relu) or (self.activations[i] == identity) or (self.activations[i] == Leaky_ReLU):
+                W = np.sqrt(2. / (dim1 + dim2)) * np.random.randn(dim2, dim1)
             else:
-                raise ValueError("No initialization for layer with activation %s" % self.activations[i])
+                raise ValueError(
+                    "No initialization for layer with activation %s" % self.activations[i])
             b = np.zeros(dim2)
 
             self.weights.append(W)
             self.biases.append(b)
 
     def grad(self, x, y):
+        """
+        Gradient of NN
+
+        Arguments:
+            x -- Input
+            y -- Target
+
+        Returns:
+            Gradient
+        """
         weight_gradient = []
         bias_gradient = []
         _, grad = self.mean_squared_error(x, y, cache=True, gradient=True)
-        #Gradient of output layer
+        # Gradient of output layer
         weight_gradient.append(grad.T.dot(self.cache_post_activations[-2]))
         bias_gradient.append(grad.sum(axis=0))
-        #Gradient of hidden layers via backprop
+        # Gradient of hidden layers via backprop
         for i in range(1, len(self.hidden_layer_sizes)):
             grad = self.cache_derivatives[-i-1]*(grad.dot(self.weights[-i]))
-            weight_gradient.append(grad.T.dot(self.cache_post_activations[-i-2]))
+            weight_gradient.append(grad.T.dot(
+                self.cache_post_activations[-i-2]))
             bias_gradient.append(grad.T.sum(axis=1))
         weight_gradient.reverse()
         bias_gradient.reverse()
@@ -130,7 +174,7 @@ class MyMLP():
         if not gradient:
             return err
         else:
-            g =  -2 * (y - t)
+            g = -2 * (y - t)
             return err, g
 
     def predict(self, x, cache=False):
@@ -153,7 +197,8 @@ class MyMLP():
             self.cache_post_activations.append(x.copy())
         t = x.T
         for i in range(len(self.hidden_layer_sizes)):
-            t = np.matmul(self.weights[i], t) + np.expand_dims(self.biases[i], 1)
+            t = np.matmul(self.weights[i], t) + \
+                np.expand_dims(self.biases[i], 1)
             if not cache:
                 t = self.activations[i](t)
             else:
@@ -162,5 +207,5 @@ class MyMLP():
             if cache:
                 self.cache_post_activations.append(t.T)
                 self.cache_derivatives.append(g.T)
-
+                
         return t.T
