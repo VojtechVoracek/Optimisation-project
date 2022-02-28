@@ -17,7 +17,7 @@
 \title{Difference between SGD and random reshuffling}
 
 \author{
-  Monde, Diego; Voracek, Vojtech and Wohlleben, Kilian\\
+  Monge, Diego; Voracek, Vojtech and Wohlleben, Kilian\\
   \textit{Faculty of Computer Science, University of Vienna, Vienna}
 }
 
@@ -104,7 +104,7 @@ the same frequency.
 without replacement from $\{1, 2,..., n\}$, in other words,
 $[\pi_1, \pi_2,...\pi_n]$ is a random permutation of the
 set $\{1, 2,..., n\}$ and than perform $n$ iterations of the following
-form
+form:
 
 $$x_t^{i+1} := x_t^i - \alpha \nabla f_{\pi_i}(x_t^i)$$
 
@@ -168,14 +168,14 @@ $$x^* = (A^T A)^{-1} A^T b$$
 Strong-convexity constant $\mu = \lambda_{min}(2A^TA)$, Lipschitz constant
 \mbox{$L=\lambda_{max}(2A^TA)$}, where $\lambda_{min}(\cdot),
 \lambda_{max}(\cdot)$ denotes the smallest and the largest
-eigenvalues. respectively. The number of components of the gradient: $n$.
+eigenvalues, respectively. The number of components of the gradient: $n$.
 
 \subsection{Neural Network}
 \noindent Definition~\cite{NEURALNETWORK}:
 $$f(x) =  A_{n} \sigma_n(A_{n-1}\sigma_{n-1}(... A_0 x + b_0)) + b_{n-1}) + b_n,$$
 \noindent where $\sigma_i$ is a non affine function. 
 
-Here we have a non convex function without a clear optimal solution. The gradient is obtained via the chain rule and the number of components is equal to the number of samples. 
+Here we have a non-convex function without a clear optimal solution. The gradient is obtained via the chain rule and the number of components is equal to the number of samples. 
 
 
 \section{Experiments}
@@ -237,7 +237,7 @@ Here we see plots of the training for the different problems. Our main interest 
 
 \section{Conclusion}
 
-RR has outperformed SGD in all our convex experiments. We have specifically seen, that RR is much more stable and yields faster convergence. In the case of the sphere function that is due to the fact that all components of $x$ are optimized over equally often, so that no dimension is "neglected". In the case of the component function we could confirm the theoretical superiority of RR proven in \cite{COMPONENTFUNCTION}. For the real world dataset, we have also seen, that optimizing over the entire dataset uniformly is better than leaving the frequency to chance in the convex case, however in the non-convex case, SGD outperformed RR. That is likely due to SGD being better able to escape saddle points in this case, however that is only a conjecture and not confirmed. Initially RR decreases faster but is surpassed by SGD at a later point. 
+RR has outperformed SGD in all our convex experiments. We have specifically seen that RR is much more stable and yields faster convergence. In the case of the sphere function that is due to the fact that all components of $x$ are optimized over equally often, so that no dimension is "neglected". In the case of the component function we could confirm the theoretical superiority of RR proven in \cite{COMPONENTFUNCTION}. For the real world dataset, we have also seen, that optimizing over the entire dataset uniformly is better than leaving the frequency to chance in the convex case, however in the non-convex case, SGD outperformed RR. That is likely due to SGD being better able to escape saddle points in this case, however that is only a conjecture and not confirmed. Initially RR decreases faster but is surpassed by SGD at a later point. 
 
 \section{Appendix}
 
